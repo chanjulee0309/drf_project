@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'users',
+    'articles',
 ]
 
 REST_FRAMEWORK = {
@@ -138,7 +139,7 @@ AUTH_USER_MODEL = "users.User"
 
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=720),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": False,
@@ -178,3 +179,9 @@ SIMPLE_JWT = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+STATIC_ROOT = BASE_DIR / "static"
+STATIC_URL = "/static/"
+
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "/media/"
