@@ -27,7 +27,7 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
         return user
     
-    def update(self, validate_data):
+    def update(self, validated_data):
         user = super().create(validated_data)
         password = user.password
         user.set_password(password)
