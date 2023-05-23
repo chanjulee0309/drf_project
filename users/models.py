@@ -4,10 +4,6 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
-        """
-        Creates and saves a User with the given email, date of
-        birth and password.
-        """
         if not email:
             raise ValueError("Users must have an email address")
 
@@ -20,10 +16,6 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, password=None):
-        """
-        Creates and saves a superuser with the given email, date of
-        birth and password.
-        """
         user = self.create_user(
             email,
             password=password,
@@ -39,7 +31,9 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    followings = models.ManyToManyField('self', symmetrical=False, related_name='followers', blank=True)
+    followings = models.ManyToManyField(
+        "self", symmetrical=False, related_name="followers", blank=True
+    )
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
